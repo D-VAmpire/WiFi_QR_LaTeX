@@ -7,7 +7,7 @@
 
 % Reads credentials from credentials.txt file
 \usepackage{datatool}
-\DTLsettabseparator
+\DTLsettabseparator{}
 \DTLloadrawdb[noheader]{credentials}{./credentials.txt}
 \DTLgetvalue{\ssid}{credentials}{1}{1}
 \DTLgetvalue{\pw}{credentials}{2}{1}
@@ -15,6 +15,7 @@
 % Uses credentials to derive correct minipage length
 \newlength{\credlen}
 \setlength{\credlen}{\maxof{\widthof{SSID (Network Name): \textbf{\ssid}}}{\widthof{SSID (Network Name): \textbf{\pw}}}}
+\setlength{\credlen}{\maxof{\credlen}{\widthof{\textsl{ Or log in using the following credentials (lame!): }}}}
 \pagenumbering{gobble}
 
 \usepackage{fancyhdr}
