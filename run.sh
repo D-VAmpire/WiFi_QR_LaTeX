@@ -21,8 +21,8 @@ then
   { read ssid ; read pw ; } <<< "$output" 
 else
   # echo "credentials.txt is not there or empty"
-  read -p "What is your network name (SSID)?" ssid
-  read -p "What is this network's password?" pw
+  read -p "What is your network name (SSID)? " ssid
+  read -p "What is this network's password? " pw
   echo $ssid > ./credentials.txt
   echo $pw >> ./credentials.txt
 fi
