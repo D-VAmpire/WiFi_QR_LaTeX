@@ -15,6 +15,7 @@ Basically you only need to execute _run.sh_, it does everything (except for inst
 
 For this reason it asks you for your Wifi credentials and stores them in a file named _credentials.txt_ (within the script's directory).
 If you want, you can instead supply that file yourself: The first line (only) contains the network's SSID and the second line (only) contains the respective password.
+For instance, the _credentials.txt.example_ file can be renamed to _credentials.txt_ in order to generate the example PDF which you see within the repository.
 
 ## Customizing
 
