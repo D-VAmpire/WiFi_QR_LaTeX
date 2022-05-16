@@ -15,7 +15,7 @@
 % Uses credentials to derive correct minipage length
 \newlength{\credlen}
 \setlength{\credlen}{\maxof{\widthof{SSID (Network Name): \textbf{\ssid}}}{\widthof{SSID (Network Name): \textbf{\pw}}}}
-\setlength{\credlen}{\maxof{\credlen}{\widthof{\textsl{ Or log in using the following credentials (lame!): }}}}
+\setlength{\credlen}{\maxof{\credlen}{\widthof{\textsl{~Or log in using the following credentials (lame!):~}}}}
 \pagenumbering{gobble}
 
 \usepackage{fancyhdr}
@@ -41,7 +41,8 @@
 %\medskip
 
 \begin{tabbing}
-  SSID (Network Name): \= \textbf{\ssid}\\
+  SSID (Network Name):\, \= \textbf{\ssid}
+  \vspace{2pt}\\
   Password: \> \textbf{\pw}\\
 \end{tabbing}
 \end{minipage}
