@@ -1,7 +1,7 @@
 #!/bin/bash
 
 check_requirement(){
-if ! command -v $1 &> /dev/null
+if ! command -v "$1" &> /dev/null
 then
     echo "$1 needs to be installed! See README.md!"
     exit
@@ -18,20 +18,20 @@ check_requirement cat
 if [ -f ./credentials.txt ] && [ -s ./credentials.txt ]
 then
   output=$(cat ./credentials.txt) 
-  { read ssid ; read pw ; } <<< "$output" 
+  { read -r ssid ; read -r pw ; } <<< "$output" 
 else
   # echo "credentials.txt is not there or empty"
-  read -p "What is your network name (SSID)? " ssid
-  read -p "What is this network's password? " pw
-  echo $ssid > ./credentials.txt
-  echo $pw >> ./credentials.txt
+  read -rp "What is your network name (SSID)? " ssid
+  read -rp "What is this network's password? " pw
+  echo "$ssid" > ./credentials.txt
+  echo "$pw" >> ./credentials.txt
 fi
 
 # call wifi-qrcode-generator in python with this data
 python3 <<HEREDOC
 import wifi_qrcode_generator
-code = wifi_qrcode_generator.wifi_qrcode( '${ssid}', False, 'WPA', '${pw}')
-code.save('${ssid}'+'.png')
+code = wifi_qrcode_generator.wifi_qrcode( r'${ssid}', False, 'WPA', r'${pw}')
+code.save(r'${ssid}'+'.png')
 HEREDOC
 
 # Let pdflatex compile our document
