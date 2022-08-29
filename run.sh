@@ -1,5 +1,10 @@
 #!/bin/bash
 
+BOLD=$'\e[1m'
+GREEN=$'\e[0;32m'
+CYAN=$'\e[36m'
+RESET=$'\e[0m'
+
 check_requirement(){
 if ! command -v "$1" &> /dev/null
 then
@@ -21,8 +26,8 @@ then
   { read -r ssid ; read -r pw ; } <<< "$output" 
 else
   # echo "credentials.txt is not there or empty"
-  read -rp "What is your network name (SSID)? " ssid
-  read -rp "What is this network's password? " pw
+  read -rp "${CYAN}What is your network name (SSID)? ${RESET}" ssid
+  read -rp "${CYAN}What is this network's password? ${RESET}" pw
   echo "$ssid" > ./credentials.txt
   echo "$pw" >> ./credentials.txt
 fi
@@ -38,6 +43,6 @@ HEREDOC
 pdflatex wifi-qr.tex &> /dev/null
 # Uncomment if you need pdflatex output (e.g. for debugging):
 # pdflatex wifi-qr.tex
-echo "Generated wifi-qr.pdf printout :)"
+echo -e "${GREEN}${BOLD}\n📜 Generated wifi-qr.pdf printout :) 📜"
 
 
