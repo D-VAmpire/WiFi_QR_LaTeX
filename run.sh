@@ -43,6 +43,6 @@ HEREDOC
 pdflatex wifi-qr.tex &> /dev/null
 # Uncomment if you need pdflatex output (e.g. for debugging):
 # pdflatex wifi-qr.tex
-echo -e "${GREEN}${BOLD}\n📜 Generated wifi-qr.pdf printout :) 📜"
+echo -e "${GREEN}${BOLD}\n📜 Generated wifi-qr.pdf printout :) 📜${RESET}"
 
 
