@@ -31,18 +31,21 @@ else
   echo "$ssid" > ./credentials.txt
   echo "$pw" >> ./credentials.txt
 fi
+echo "wifi-qrcode-generator -s ${ssid} -p ${pw} -a WPA -o ${ssid}.png"
 
-# call wifi-qrcode-generator in python with this data
-python3 <<HEREDOC
-import wifi_qrcode_generator
-code = wifi_qrcode_generator.wifi_qrcode( r'${ssid}', False, 'WPA', r'${pw}')
-code.save(r'${ssid}'+'.png')
-HEREDOC
+wifi-qrcode-generator -s "${ssid}" -p "${pw}" -a WPA -o "${ssid}.png"
 
 # Let pdflatex compile our document
-pdflatex wifi-qr.tex &> /dev/null
+mkdir -p out
+pdflatex -output-directory out -jobname "${ssid}" wifi-qr.tex &> /dev/null
 # Uncomment if you need pdflatex output (e.g. for debugging):
 # pdflatex wifi-qr.tex
-echo -e "${GREEN}${BOLD}\n📜 Generated wifi-qr.pdf printout :) 📜${RESET}"
+
+# Clean up
+mv "out/${ssid}.pdf" "${ssid}.pdf"
+rm -rf out
+rm "${ssid}.png"
+
+echo -e "${GREEN}${BOLD}\n📜 Generated ${ssid}.pdf printout :) 📜${RESET}"
 
 
