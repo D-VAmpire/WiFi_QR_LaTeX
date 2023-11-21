@@ -25,9 +25,9 @@ check_requirement cat
 while (( "$#" )); do
     if (( $(($# % 2)) )); then echo "Error: Uneven number of arguments given: does not fit \"--key value\" syntax."; exit 1; fi
     case "$1" in
-        -s|--ssid|--name) ssid="${2:-}"; shift 2;;
+        -s|-n|--ssid|--name) ssid="${2:-}"; shift 2;;
         -p|--pw|--password|--pass|--psk) pw="${2:-}"; shift 2;;
-        -o|--output|--output-file|--outfile) outfile="${2:-}"; shift 2;;
+        -o|--out|--output|--output-file|--outfile) outfile="${2:-}"; shift 2;;
         *) echo "unknown option: $1" >&2; exit 1;;
     esac
 done
