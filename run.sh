@@ -31,7 +31,6 @@ else
   echo "$ssid" > ./credentials.txt
   echo "$pw" >> ./credentials.txt
 fi
-echo "wifi-qrcode-generator -s ${ssid} -p ${pw} -a WPA -o ${ssid}.png"
 
 wifi-qrcode-generator -s "${ssid}" -p "${pw}" -a WPA -o "${ssid}.png"
 
@@ -46,6 +45,6 @@ mv "out/${ssid}.pdf" "${ssid}.pdf"
 rm -rf out
 rm "${ssid}.png"
 
-echo -e "${GREEN}${BOLD}\n📜 Generated ${ssid}.pdf printout :) 📜${RESET}"
+echo -e "${GREEN}${BOLD}\n📜 Generated \"${ssid}.pdf\" printout :) 📜${RESET}"
 
 
